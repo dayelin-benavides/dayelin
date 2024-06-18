@@ -17,10 +17,28 @@ def registrar_trabajador():
         print("No puede contener numeros. Intente otra vez.")
 
     while True:
-        cargo = input("Ingrese cargo (CEO|Desarrollador|Analista): ")
-        if cargo and valido(cargo):
-            break
-        print("No puede contener numeros. Intente otra vez.")
+        try:
+            print("Seleccione un cargo: ")
+            print("1.- CEO.")
+            print("2.- Desarrollador.")
+            print("3.- Analista.")
+            cargo = int(input("Ingrese numero segun el cargo: "))
+            if cargo==1:
+                cargo="CEO"
+                print("Usted eligio CEO.")
+                break
+            elif cargo==2:
+                cargo="Desarrollador"
+                print("Usted eligio Desarrollador.")
+                break
+            elif cargo==3:
+                cargo="Analista"
+                print("Usted eligio Analista.")
+                break
+            else:
+                print("ERROR. Debe ser un numero del menu.")
+        except ValueError:
+            print("Ingrese caracter numerico.")
 
     while True:
         try:
@@ -32,9 +50,9 @@ def registrar_trabajador():
         except ValueError:
             print("Solo puede contener numeros. Intente otra vez.")
     
-    descuentoSalud=0.07*sueldoBruto
-    descuentoAFP=0.12*sueldoBruto
-    liquido=sueldoBruto-descuentoSalud-descuentoAFP
+    descuentoSalud=round(0.07*sueldoBruto)
+    descuentoAFP=round(0.12*sueldoBruto)
+    liquido=round(sueldoBruto-descuentoSalud-descuentoAFP)
     trabajadores.append((nombre,apellido,cargo,sueldoBruto,descuentoSalud,descuentoAFP,liquido))
 
 def listarTrabajadores():
